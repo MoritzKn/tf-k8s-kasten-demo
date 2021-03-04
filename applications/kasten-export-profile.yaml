@@ -1,0 +1,21 @@
+apiVersion: config.kio.kasten.io/v1alpha1
+kind: Profile
+metadata:
+  name: s3-export
+  namespace: kasten-io
+spec:
+  type: Location
+  locationSpec:
+    credential:
+      secretType: AwsAccessKey
+      secret:
+        apiVersion: v1
+        kind: Secret
+        name: k10-s3-secret
+        namespace: kasten-io
+    type: ObjectStore
+    objectStore:
+      objectStoreType: S3
+      # NOTE: Name and region must be manually update!
+      name: kasten-export-00000000000000000000000000
+      region: eu-central-1
