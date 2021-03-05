@@ -80,6 +80,8 @@ JSON
 resource "aws_s3_bucket" "kasten_export" {
   bucket_prefix = "kasten-export-"
   acl           = "private"
+  # We do this so that we can easily delete the bucket once we are done,
+  # leave this out in prod
   force_destroy = true
 
   tags = local.tags

@@ -3,12 +3,12 @@ provider "aws" {
 }
 
 locals {
+  name = "example"
+
   tags = {
     Project   = "Terraform K8s Example Cluster"
     Terraform = "True"
   }
-
-  name = "example"
 }
 
 data "aws_vpc" "default" {
