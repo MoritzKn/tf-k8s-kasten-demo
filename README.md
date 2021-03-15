@@ -5,7 +5,7 @@
 ## Structure
 
 - `./cluster` contains cluster level Terraform code. Apply this first.
-- `./application` contains Terraform code for things inside the cluster. Apply this second.
+- `./applications` contains Terraform code for things inside the cluster. Apply this second.
 - `./demo-app` contains a minimal database to demonstrate back-up & restore with Kasten.
 
 ## Building on top of this
