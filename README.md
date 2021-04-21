@@ -1,6 +1,6 @@
 # Demo Terraform Setup for K8s + Kasten.io
 
-**See**: Working with Kubernetes and Terraform (not yet published) on the [Kasten](https://www.kasten.io/) blog.
+**See**: [Working with Kubernetes and Terraform](https://blog.kasten.io/concepts-behind-terraform-and-kubernetes) on the [Kasten](https://www.kasten.io/) blog.
 
 ## Structure
 
