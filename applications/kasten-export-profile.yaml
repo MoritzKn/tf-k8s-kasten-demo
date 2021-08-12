@@ -16,6 +16,6 @@ spec:
     type: ObjectStore
     objectStore:
       objectStoreType: S3
-      # NOTE: Name and region must be manually update!
+      # NOTE: Name and region must be manually updated!
       name: kasten-export-00000000000000000000000000
       region: eu-central-1
