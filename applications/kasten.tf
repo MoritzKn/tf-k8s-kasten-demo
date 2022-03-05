@@ -19,6 +19,16 @@ resource "helm_release" "kasten" {
     name  = "secrets.awsSecretAccessKey"
     value = aws_iam_access_key.kasten.secret
   }
+
+  set {
+    name  = "vault.address"
+    value = "http://vault.vault.svc.cluster.local:8200"
+  }
+
+  set {
+    name  = "vault.secretName"
+    value = "vault-creds"
+  }
 }
 
 resource "aws_iam_user" "kasten" {

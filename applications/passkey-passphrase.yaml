@@ -1,0 +1,9 @@
+apiVersion: vault.kio.kasten.io/v1alpha1
+kind: Passkey
+metadata:
+  name: passkey2
+spec:
+  secret:
+    name: k10-cluster-passphrase-2
+    namespace: kasten-io
+  usenow: true

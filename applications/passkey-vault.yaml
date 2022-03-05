@@ -1,0 +1,8 @@
+apiVersion: vault.kio.kasten.io/v1alpha1
+kind: Passkey
+metadata:
+  name: vaultKey_v1
+spec:
+  vaulttransitkeyname: kasten
+  vaulttransitpath: /transit
+  usenow: true

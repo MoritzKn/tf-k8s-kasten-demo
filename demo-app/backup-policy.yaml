@@ -11,24 +11,24 @@ spec:
     daily: 7
   actions:
     - action: backup
-    - action: export
-      exportParameters:
-        frequency: "@hourly"
-        migrationToken:
-          name: ""
-          namespace: ""
-        profile:
-          name: s3-export
-          namespace: kasten-io
-        receiveString: ""
-        exportData:
-          enabled: true
-      retention:
-        hourly: 0
-        daily: 0
-        weekly: 0
-        monthly: 0
-        yearly: 0
+    # - action: export
+    #   exportParameters:
+    #     frequency: "@hourly"
+    #     migrationToken:
+    #       name: ""
+    #       namespace: ""
+    #     profile:
+    #       name: s3-export
+    #       namespace: kasten-io
+    #     receiveString: ""
+    #     exportData:
+    #       enabled: true
+    #   retention:
+    #     hourly: 0
+    #     daily: 0
+    #     weekly: 0
+    #     monthly: 0
+    #     yearly: 0
   selector:
     matchLabels:
       k10.kasten.io/appNamespace: demo-app

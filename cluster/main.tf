@@ -53,7 +53,7 @@ resource "aws_iam_role_policy_attachment" "cluster_eks_vpc_resource_controller" 
 resource "aws_eks_cluster" "cluster" {
   name     = local.name
   role_arn = aws_iam_role.cluster.arn
-  version  = "1.18"
+  version  = "1.21"
 
   vpc_config {
     subnet_ids = data.aws_subnet_ids.default.ids
