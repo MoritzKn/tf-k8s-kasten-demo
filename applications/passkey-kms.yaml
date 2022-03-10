@@ -1,8 +1,7 @@
 apiVersion: vault.kio.kasten.io/v1alpha1
 kind: Passkey
 metadata:
-  name: vaultKey_v1
+  name: kmsKey
 spec:
-  vaulttransitkeyname: kasten
-  vaulttransitpath: /transit
+  awscmkkeyid: arn:aws:kms:eu-central-1:123456789:alias/kasten
   usenow: true

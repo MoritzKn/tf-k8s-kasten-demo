@@ -20,15 +20,9 @@ resource "helm_release" "kasten" {
     value = aws_iam_access_key.kasten.secret
   }
 
-  set {
-    name  = "vault.address"
-    value = "http://vault.vault.svc.cluster.local:8200"
-  }
-
-  set {
-    name  = "vault.secretName"
-    value = "vault-creds"
-  }
+  depends_on = [
+    aws_kms_key.key,
+  ]
 }
 
 resource "aws_iam_user" "kasten" {
@@ -79,6 +73,19 @@ resource "aws_iam_user_policy" "kasten" {
           "Condition": {
               "StringLike": {
                   "ec2:ResourceTag/Name": "Kasten: Snapshot*"
+              }
+          }
+      },
+      {
+          "Effect": "Allow",
+          "Action": [
+              "kms:Decrypt",
+              "kms:Encrypt"
+          ],
+          "Resource": "*",
+          "Condition": {
+              "ForAnyValue:StringEquals": {
+                  "kms:ResourceAliases": "${aws_kms_alias.alias.name}"
               }
           }
       }
@@ -152,4 +159,46 @@ resource "kubernetes_secret" "kasten_export" {
 
 output "kasten_export_bucket_name" {
   value = aws_s3_bucket.kasten_export.id
+}
+
+resource "aws_kms_key" "key" {
+    policy = <<JSON
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "Enable IAM User Permissions",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::${data.aws_caller_identity.current.account_id}:root"
+            },
+            "Action": "kms:*",
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "${aws_iam_user.kasten.arn}"
+            },
+            "Action": "kms:*",
+            "Resource": "*"
+        }
+    ]
+}
+JSON
+
+    tags = local.tags
+}
+
+resource "aws_kms_alias" "alias" {
+  name          = "alias/kasten"
+  target_key_id = aws_kms_key.key.key_id
+}
+
+output "kms_key_arn" {
+    value = aws_kms_key.key.arn
+}
+
+output "kms_key_alias_arn" {
+    value = aws_kms_alias.alias.arn
 }

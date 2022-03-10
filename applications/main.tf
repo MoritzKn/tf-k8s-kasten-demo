@@ -18,3 +18,5 @@ locals {
     Terraform = "True"
   }
 }
+
+data "aws_caller_identity" "current" {}
