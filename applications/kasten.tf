@@ -34,8 +34,9 @@ resource "aws_iam_access_key" "kasten" {
   user = aws_iam_user.kasten.name
 }
 
-# Minimal set of permissions needed by K10 for integrating with AWS EBS
+# Minimal set of permissions needed by K10 for integrating with AWS EBS + KMS Access
 # See: https://docs.kasten.io/latest/install/aws/aws_permissions.html#using-k10-with-aws-ebs
+# See: https://docs.kasten.io/latest/install/configure.html#aws-customer-managed-keys
 resource "aws_iam_user_policy" "kasten" {
   name = "kasten"
   user = aws_iam_user.kasten.name
