@@ -163,7 +163,7 @@ output "kasten_export_bucket_name" {
 }
 
 resource "aws_kms_key" "key" {
-    policy = <<JSON
+  policy = <<JSON
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -188,7 +188,7 @@ resource "aws_kms_key" "key" {
 }
 JSON
 
-    tags = local.tags
+  tags = local.tags
 }
 
 resource "aws_kms_alias" "alias" {
@@ -197,9 +197,9 @@ resource "aws_kms_alias" "alias" {
 }
 
 output "kms_key_arn" {
-    value = aws_kms_key.key.arn
+  value = aws_kms_key.key.arn
 }
 
 output "kms_key_alias_arn" {
-    value = aws_kms_alias.alias.arn
+  value = aws_kms_alias.alias.arn
 }
