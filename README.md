@@ -1,6 +1,10 @@
 # Demo Terraform Setup for K8s + Kasten.io
 
-**See**: [Working with Kubernetes and Terraform](https://blog.kasten.io/concepts-behind-terraform-and-kubernetes) on the [Kasten](https://www.kasten.io/) blog.
+**See my Series _Working with Kubernetes and Terraform_ on the [Veeam Blog](https://www.veeam.com/blog/):**
+
+- [Part 1: Concepts Behind Terraform Kubernetes](https://www.veeam.com/blog/terraform-kubernetes-concepts.html)
+- [Part 2: Hands-on Deploying K8s with Terraform](https://www.veeam.com/blog/terraform-kubernetes-deployment.html)
+- [Part 3: Installing Kasten using Terraform](https://www.veeam.com/blog/terraform-kubernetes-install.html)  
 
 ## Structure
 
